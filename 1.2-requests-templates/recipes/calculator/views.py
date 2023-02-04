@@ -1,6 +1,5 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from copy import deepcopy
 
 DATA = {
     'omlet': {
@@ -25,8 +24,7 @@ def recipe_view(request, page):
         context = {}
         return render(request, 'calculator/index.html', context)
     servings = int(request.GET.get('servings', 0))
-    # recipe = DATA.get(page).copy()
-    recipe = deepcopy(DATA.get(page))
+    recipe = DATA.get(page).copy()
     if servings:
         for ingredient in recipe:
             recipe[ingredient] *= servings
