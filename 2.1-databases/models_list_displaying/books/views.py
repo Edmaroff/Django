@@ -18,8 +18,11 @@ def books_view(request):
 def composition_view(request, date):
     template = 'books/composition.html'
     compositions = Book.objects.order_by('pub_date').filter(pub_date=date)
-    previous_book = Book.objects.order_by('pub_date').filter(pub_date__lt=date).first()
+    previous_book = Book.objects.order_by('-pub_date').filter(pub_date__lt=date).first()
+    # print(previous_book.pub_date)
     next_book = Book.objects.order_by('pub_date').filter(pub_date__gt=date).first()
+    # print(next_book.pub_date)
+
     context = {
         'compositions': compositions,
         'previous_book': previous_book,
