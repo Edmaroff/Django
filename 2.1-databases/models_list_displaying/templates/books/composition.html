@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог книг{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/books">Каталог</a></h1>
+        </div>
+        <div class="row">
+            {% for composition in compositions %}
+            <div class="book col-md-4">
+                <h2><a href="{{ composition.get_absolute_url }}">{{ composition.name }}</a></h2>
+                <p>Автор: {{ composition.author }}</p>
+                <p>Дата публикации: {{ composition.pub_date|date:"Y-m-d" }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    {% if previous_book%}
+    <<a href="{{ previous_book.get_absolute_url }}">{{ previous_book.pub_date|date:"Y-m-d" }}</a>
+    {% endif %}
+    {% if next_book %}
+    <a href="{{ next_book.get_absolute_url }}">{{ next_book.pub_date|date:"Y-m-d" }}</a>>
+    {% endif %}
+    </div>
+{% endblock %}
+

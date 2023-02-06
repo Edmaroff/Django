@@ -14,5 +14,5 @@ class Command(BaseCommand):
 
         for phone in phones:
             Phone(name=phone['name'], price=phone['price'], image=phone['image'], release_data=phone['release_date'],
-                   lte_exists=phone['lte_exists'],slug=phone['name']).save()
+                   lte_exists=phone['lte_exists'],slug=phone['name']).save(args)
 
