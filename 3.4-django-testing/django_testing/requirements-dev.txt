@@ -1,4 +1,4 @@
 -r requirements.txt
-pytest
-pytest-django
-model_bakery
+pytest==7.2.1
+pytest-django==4.5.2
+model_bakery==1.10.1
