@@ -7,6 +7,6 @@ class Sensor(models.Model):
 
 class Measurement(models.Model):
     temperature = models.DecimalField(max_digits=5, decimal_places=2)
-    date = models.DateField(auto_now=True)
+    date = models.DateTimeField(auto_now=True)
     sensor = models.ForeignKey('Sensor', on_delete=models.CASCADE, related_name='measurements')
-    photo = models.ImageField(blank=True, upload_to="photos/%Y/%m/%d/")
+    photo = models.ImageField(null=True, upload_to="photos/%Y/%m/%d/")
